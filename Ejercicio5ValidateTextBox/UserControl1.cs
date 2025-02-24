@@ -57,7 +57,11 @@ namespace Ejercicio5ValidateTextBox
         public eTipo Tipo
         {
             get { return tipo; }
-            set { tipo = value; this.Refresh(); }
+            set
+            {
+                tipo = value;
+                this.Refresh();
+            }
         }
 
         /**
@@ -121,7 +125,7 @@ namespace Ejercicio5ValidateTextBox
         {
             //disparo ele event q cree
             OnTextChange(EventArgs.Empty);
-
+            this.Refresh(); 
 
         }
         protected override void OnResize(EventArgs e)
