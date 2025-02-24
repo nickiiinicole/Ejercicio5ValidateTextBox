@@ -39,7 +39,7 @@
             this.validateTextBox1.Name = "validateTextBox1";
             this.validateTextBox1.Size = new System.Drawing.Size(558, 42);
             this.validateTextBox1.TabIndex = 0;
-            this.validateTextBox1.Texto = "4";
+            this.validateTextBox1.Texto = "hola";
             this.validateTextBox1.Tipo = Ejercicio5ValidateTextBox.eTipo.Textual;
             // 
             // Form1

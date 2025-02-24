@@ -57,7 +57,7 @@ namespace Ejercicio5ValidateTextBox
         public eTipo Tipo
         {
             get { return tipo; }
-            set { tipo = value; }
+            set { tipo = value; this.Refresh(); }
         }
 
         /**
@@ -79,6 +79,18 @@ namespace Ejercicio5ValidateTextBox
 
             Graphics graphics = e.Graphics;
             // Dibujar un rectángulo desde (5,5) hasta (Width-5, Height-5).
+            bool valid = false;
+            pen.Color = Color.Red;
+            //Acordarse que tryParse, hace un Trim() deirectamente al txt 
+            if (Tipo == eTipo.Numerico && int.TryParse(textBox1.Text, out int numbers))
+            {
+                valid = true;
+            }
+            if (Tipo == eTipo.Textual && ComprobationText())
+            {
+                valid = true;
+            }
+            pen.Color = valid ? Color.Green : Color.Red;
             e.Graphics.DrawRectangle(pen, new Rectangle(5, 5, this.Width - 10, this.Height - 10));
         }
 
@@ -110,19 +122,7 @@ namespace Ejercicio5ValidateTextBox
             //disparo ele event q cree
             OnTextChange(EventArgs.Empty);
 
-            bool valid = false;
-            pen.Color = Color.Red;
-            //Acordarse que tryParse, hace un Trim() deirectamente al txt 
-            if (Tipo == eTipo.Numerico && int.TryParse(textBox1.Text, out int numbers))
-            {
-                valid = true;
-            }
-            if (Tipo == eTipo.Textual && ComprobationText())
-            {
-                valid = true;
-            }
-            pen.Color = valid ? Color.Green : Color.Red;
-            this.Refresh();
+
         }
         protected override void OnResize(EventArgs e)
         {
